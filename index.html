@@ -73,7 +73,7 @@
     }
 
     .intro-text {
-      flex: 1.5;
+      flex: 1.2;
     }
 
     .intro-text h2 {
@@ -84,7 +84,7 @@
 
     /* 影片容器樣式 */
     .video-container {
-      flex: 1;
+      flex: 1.5;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -301,10 +301,35 @@
       font-size: 0.9em;
     }
 
-    /* 手機版響應式 */
+/* 手機版響應式 */
     @media (max-width: 768px) {
-      .grid { grid-template-columns: 1fr; }
-      .intro-section { flex-direction: column; gap: 1.5em; }
+      /* 1. 縮小最外層容器的留白 */
+      .container { 
+        padding: 1.5em 1em; 
+      }
+      
+      /* 2. 縮小引言與影片區塊的留白，讓影片能左右撐到最大 */
+      .intro-section { 
+        flex-direction: column; 
+        gap: 1.5em; 
+        padding: 1.5em 1em; 
+      }
+
+      /* 3. 卡片改為單欄，並稍微縮小卡片內距 */
+      .grid { 
+        grid-template-columns: 1fr; 
+      }
+      .card {
+        padding: 20px 15px; 
+      }
+      
+      /* 4. 確保影片容器在手機上強制滿版 */
+      .video-container {
+        width: 100%;
+      }
+      .video-wrapper {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -496,4 +521,5 @@
 
 </body>
 </html>
+
 
