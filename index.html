@@ -201,31 +201,104 @@
       margin: 0;
     }
 
-    /* 頁尾樣式 */
+   /* ===== 頁尾樣式 (全部置中版) ===== */
     footer {
       background-color: #e9e9e9;
+      position: relative;
     }
 
-    .footer-bg {
-      background-image: url('cis-1.jpg');
-      background-repeat: repeat-x;
-      background-size: auto 100%;
-      height: 100px;
-      position: relative;
-      opacity: 0.5;
-    }
-
-    .footer-content {
-      position: relative;
-      z-index: 1;
-      margin-top: -100px;
-      padding: 1em;
-      color: #666;
+    /* 聯絡資訊區塊 (垂直置中排列) */
+    .footer-info-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 3em 2em 2em 2em; /* 微調底部 padding 讓視覺更集中 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      height: 100px;
+      gap: 15px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 1. Logo 樣式 */
+    .footer-logo {
+      max-width: 350px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 5px;
+    }
+
+    /* 2. 地址樣式 (第一行) */
+    .footer-address {
+      font-size: 0.95em;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* 3. 電話與分機的整合橫排 (第二行) */
+    .footer-contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 15px; /* 電話和分機之間的距離 */
+      margin-top: 5px;
+    }
+
+    /* 電話樣式 (低調處理：縮小字體、改深灰色、無底線) */
+    .footer-phone {
+      font-size: 0.95em;
+      color: #555; 
+    }
+
+    /* 分機樣式 (膠囊狀排列) */
+    .footer-extensions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .ext-item {
+      background-color: #fff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid #d0d0d0;
+      font-size: 0.9em;
+      color: #555;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+
+    /* 4. 底部版權與浮水印背景 (保留你找回來的 cis-1.jpg) */
+    .footer-bottom-area {
+      position: relative;
+      height: 100px; 
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .footer-bg {
+      background-image: url('cis-1.jpg'); 
+      background-repeat: repeat-x;
+      background-size: auto 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.5;
+      z-index: 1;
+    }
+
+    .footer-copyright {
+      position: relative;
+      z-index: 2;
+      color: #666;
+      font-size: 0.9em;
     }
 
     /* 手機版響應式 */
@@ -252,8 +325,8 @@
     
     <section id="intro" class="intro-section">
       <div class="intro-text">
-        <h2>招手竹竹苗大矽谷頂尖學子</h2>
-        <p>竹竹苗大矽谷關心教育的家長、同學和老師看過來，讓咱們一起看看陽明交大附中有哪些特色與精彩吧！</p>
+        <h2>招手竹竹苗大矽谷頂尖學子 - 讓咱們一起看看陽明交大附中的特色與精彩！</h2>
+        <p>竹竹苗大矽谷關心教育的家長、同學和老師看過來 </p>
       </div>
 
       <div class="video-container">
@@ -387,17 +460,37 @@
 
   </div>
 
-  <footer>
-    <div style="
-      background-image: url('cis-1.jpg');
-      background-repeat: repeat-x;
-      background-size: auto 100%;
-      height: 100px;
-      position: relative;
-      opacity: 0.5;">
+<footer>
+    <div class="footer-info-container">
+      
+      <img src="logo-footer.png" alt="國立陽明交大附中" class="footer-logo">
+      
+      <div class="footer-address">
+        地址：30252 新竹縣竹北市中央路3號<br>
+        No.3, Jhongyang RD., Jhubei City, Hsinchu County 30252, Taiwan, R.O.C.
+      </div>
+
+      <div class="footer-contact-row">
+        <div class="footer-phone">
+          本校電話：03-5517330
+        </div>
+        
+        <div class="footer-extensions">
+          <span class="ext-item">教務處:210</span>
+          <span class="ext-item">學務處:230</span>
+          <span class="ext-item">實習處:250</span>
+          <span class="ext-item">輔導處:280</span>
+          <span class="ext-item">圖書館:290</span>
+        </div>
+      </div>
+
     </div>
-    <div style="position: relative; z-index: 1; margin-top: -100px; padding: 1em; color: #666; text-align: center;">
-      © 2026 國立陽明交通大學附屬竹北高級中等學校
+
+    <div class="footer-bottom-area">
+      <div class="footer-bg"></div>
+      <div class="footer-copyright">
+        © 2026 國立陽明交通大學附屬竹北高級中等學校
+      </div>
     </div>
   </footer>
 
