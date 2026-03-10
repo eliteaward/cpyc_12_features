@@ -20,6 +20,7 @@
       color: white;
       padding: 2.5em 1em;
       text-align: center;
+      position: relative; /* 定位 Logo 用 */
     }
     
     header h1 {
@@ -30,6 +31,22 @@
     header p {
       margin: 0;
       font-size: 1.1em;
+    }
+
+    /* 左上角圖片淡入效果 */
+    .top-left-logo {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      max-height: 80px;
+      width: auto;
+      opacity: 0;
+      animation: fadeInEffect 2.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeInEffect {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     nav {
@@ -60,7 +77,7 @@
       margin: auto;
     }
 
-    /* 引言與結語區塊 (對應截圖的設計) */
+    /* 引言區塊 */
     .intro-section {
       display: flex;
       align-items: center;
@@ -82,26 +99,42 @@
       font-size: 1.8em;
     }
 
-    /* 圖片預留區塊樣式 */
-    .intro-image-placeholder {
+    /* ===== 修改：影片容器樣式 ===== */
+    .video-container {
       flex: 1;
-      background-color: #f0f0f0;
-      border: 2px dashed #ccc;
-      border-radius: 8px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 250px;
-      color: #888;
-      text-align: center;
-      padding: 1em;
+      width: 100%;
     }
 
-    .intro-image-placeholder img {
-      max-width: 100%;
+    /* 讓 iframe 響應式的技巧 (16:9比例) */
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
       border-radius: 8px;
-      display: none; /* 填入 src 後可將此行移除或改為 block */
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
     }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-caption {
+      font-size: 0.95em;
+      color: #555;
+      font-weight: bold;
+      text-align: center;
+    }
+    /* =========================== */
 
     /* 兩格一行的網格系統 */
     .grid {
@@ -128,14 +161,26 @@
       box-shadow: 0 15px 35px rgba(0, 51, 102, 0.12);
     }
 
-    /* 加深後的右上角浮水印大數字 */
+    /* 超連結樣式優化 */
+    .card-desc a {
+      color: #005599;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 0.2s;
+    }
+    .card-desc a:hover {
+      border-bottom: 1px solid #005599;
+    }
+
+    /* 浮水印大數字 */
     .card-number-watermark {
       position: absolute;
       top: -10px;
       right: 15px;
       font-size: 110px;
       font-weight: 900;
-      color: rgba(192, 144, 48, 0.18); /* 透明度調整至 0.18，顏色更深 */
+      color: rgba(192, 144, 48, 0.18);
       line-height: 1;
       z-index: 0;
       pointer-events: none;
@@ -171,7 +216,7 @@
       margin: 0;
     }
 
-    /* 頁尾樣式 (保留第一版背景圖片設計) */
+    /* 頁尾樣式 */
     footer {
       background-color: #e9e9e9;
     }
@@ -202,12 +247,20 @@
     @media (max-width: 768px) {
       .grid { grid-template-columns: 1fr; }
       .intro-section { flex-direction: column; gap: 1.5em; }
+      
+      .top-left-logo {
+        position: static;
+        display: block;
+        margin: 0 auto 10px auto;
+        max-height: 60px;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
+    <img src="logo.png" alt="陽明交大附中 Logo" class="top-left-logo">
     <h1>附中生招生宣導網 </h1>
     <p> </p>
   </header>
@@ -225,10 +278,14 @@
         <h2>招手竹竹苗大矽谷頂尖學子</h2>
         <p>竹竹苗大矽谷關心教育的家長、同學和老師看過來，讓咱們一起看看陽明交大附中有哪些特色與精彩吧！ </p>
       </div>
-      <div class="intro-image-placeholder">
-        <span>這裡保留給圖片：<br>陽明交大林奇宏校長與附中陳瑞榮校長合影</span>
+
+      <div class="video-container">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/Q8sRP9k6qpY" title="AI陳瑞榮校長介紹附中影片" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-    </section>
+        <div class="video-caption">AI陳瑞榮校長介紹附中影片</div>
+      </div>
+      </section>
 
     <section id="features">
       <div class="grid">
@@ -256,7 +313,7 @@
           <div class="card-content-wrapper">
             <h2 class="card-title">在地在家的國際教育 </h2>
             <h3 class="card-subtitle">在家在校雙語學習，扎根臺灣，接軌全世界！ </h3>
-            <p class="card-desc">附中推動以升學國內頂尖大學為主軸的深度國際化，不分科班年級都能選擇自己能力所及的「在地在家國際教育」方式。  我們透過ewant、APX與AP等附中師生的獨特策略規劃，結合外師教學、全英或雙語教學、國際雙聯學制(線上國際英語課程)、國際學生交流互訪、國際遊學團與教育旅行等豐沛的國際化資源。 [cite: 9] 在地在家的國際教育，既讓附中孩子高中學習階段在地在家與家人相伴，也能成為擁有理解、交流與合作能力等國際移動力的新世代人才。</p>
+            <p class="card-desc">附中推動以升學國內頂尖大學為主軸的深度國際化，不分科班年級都能選擇自己能力所及的「在地在家國際教育」方式。  我們透過ewant、APX與AP等附中師生的獨特策略規劃，結合外師教學、全英或雙語教學、國際雙聯學制(線上國際英語課程)、國際學生交流互訪、國際遊學團與教育旅行等豐沛的國際化資源。 在地在家的國際教育，既讓附中孩子高中學習階段在地在家與家人相伴，也能成為擁有理解、交流與合作能力等國際移動力的新世代人才。</p>
           </div>
         </div>
 
@@ -274,7 +331,7 @@
           <div class="card-content-wrapper">
             <h2 class="card-title">每年擴增 1500 萬校務基金 </h2>
             <h3 class="card-subtitle">學習資源更給力！學習環境更升級！ </h3>
-            <p class="card-desc">在自家頂大的強大支持下，每年固定提供附中有形與無形龐大資源，穩定的校務基金投入，讓學校能持續改善硬體設施、引進最新教學設備，並提供更多獎助學金與國際交流機會。 [cite: 13] 這筆龐大的擴增資源規劃在多元拔尖育才(拔尖)、弱勢學習襄助(扶弱)、整體優質提升(顧本)及階段策略提升(機敏)等四類多個細項計畫的經資門上，確保附中學生在學習過程中能享有最完善的支持與陪伴，讓附中教育品質不斷提升並建立嶄新典範。 </p>
+            <p class="card-desc">在自家頂大的強大支持下，每年固定提供附中有形與無形龐大資源，穩定的校務基金投入，讓學校能持續改善硬體設施、引進最新教學設備，並提供更多獎助學金與國際交流機會。 這筆龐大的擴增資源規劃在多元拔尖育才(拔尖)、弱勢學習襄助(扶弱)、整體優質提升(顧本)及階段策略提升(機敏)等四類多個細項計畫的經資門上，確保附中學生在學習過程中能享有最完善的支持與陪伴，讓附中教育品質不斷提升並建立嶄新典範。 </p>
           </div>
         </div>
 
@@ -283,7 +340,7 @@
           <div class="card-content-wrapper">
             <h2 class="card-title">免費使用 ewant 開放課程 </h2>
             <h3 class="card-subtitle">零距離接軌陽明交大豐沛前瞻課程！ </h3>
-            <p class="card-desc">附中學生能透過ＨＥＲＯ（高教開放資源研究中心）與ewant育網開放教育平台，免費選修200多門ewant課程，直接修習陽交大開設的線上課程，這些涵蓋科學、人文、工程等林林總總的多元領域，大大拓展及滿足頂尖高中生的可能需求，不僅讓附中同學提前接觸大學課程內容，也能培養自主學習的能力，不侷限的拓展知識的深度與廣度。 </p>
+            <p class="card-desc">附中學生能透過<a href="https://www.ewant.org/?redirect=0" target="_blank">ewant育網開放教育平台</a>與ＨＥＲＯ（高教開放資源研究中心），免費選修200多門ewant課程，直接修習陽交大開設的線上課程，這些涵蓋科學、人文、工程等林林總總的多元領域，大大拓展及滿足頂尖高中生的可能需求，不僅讓附中同學提前接觸大學課程內容，也能培養自主學習的能力，不侷限的拓展知識的深度與廣度。 </p>
           </div>
         </div>
 
@@ -328,7 +385,7 @@
           <div class="card-content-wrapper">
             <h2 class="card-title">開放服儀，自由穿搭展現活力 </h2>
             <h3 class="card-subtitle">不老叩叩，不匠氣，只在意頭皮底下的心智潛能與精彩！ </h3>
-            <p class="card-desc">附中學生絕大多數時間都可以自由選擇服裝，展現個人風格與自信。  這種開放的制度，讓學校更重視學生的內在成長與學習成果，而非外在形式，真正營造出尊重多元的校園文化。  服儀的自由也讓校園充滿創意與活力，學生能在日常生活中展現自我，培養自我管理與審美能力。 [cite: 25] 這樣的氛圍不僅提升自信心，也讓每位學生都能在舒適的狀態下專注於學習，展現最真實的自己。</p>
+            <p class="card-desc">附中學生絕大多數時間都可以自由選擇服裝，展現個人風格與自信。  這種開放的制度，讓學校更重視學生的內在成長與學習成果，而非外在形式，真正營造出尊重多元的校園文化。  服儀的自由也讓校園充滿創意與活力，學生能在日常生活中展現自我，培養自我管理與審美能力。 這樣的氛圍不僅提升自信心，也讓每位學生都能在舒適的狀態下專注於學習，展現最真實的自己。</p>
           </div>
         </div>
 
@@ -353,8 +410,6 @@
 
   </div>
 
-
-
   <footer>
     <div style="
       background-image: url('cis-1.jpg');
@@ -369,15 +424,5 @@
     </div>
   </footer>
 
-
-
-  
 </body>
 </html>
-
-
-
-
-
-
-
