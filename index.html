@@ -76,11 +76,42 @@
       flex: 1.2;
     }
 
+    /* ===== 優化後的引言文字排版 ===== */
     .intro-text h2 {
-      color: #003366;
       margin-top: 0;
-      font-size: 1.8em;
+      margin-bottom: 15px;
+      line-height: 1.4;
     }
+
+    /* 主標題：字體較大、穩重深藍 */
+    .title-main {
+      display: block; 
+      font-size: 1.1em;
+      color: #003366;
+      letter-spacing: 2px; 
+      margin-bottom: 8px;
+    }
+
+    /* 副標題：字體稍微縮小、顏色層次變化 */
+    .title-sub {
+      display: block;
+      font-size: 0.75em;
+      color: #005599;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* 前言段落：增加行高、顏色調柔和 */
+    .intro-lead {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+      letter-spacing: 1px;
+      margin: 0;
+      border-left: 4px solid #C09030; 
+      padding-left: 12px; 
+    }
+    /* ============================== */
 
     /* 影片容器樣式 */
     .video-container {
@@ -142,21 +173,20 @@
       box-shadow: 0 15px 35px rgba(0, 51, 102, 0.12);
     }
 
-    /* ===== 超連結樣式優化，讓它更明顯 ===== */
+    /* 超連結樣式優化，讓它更明顯 */
     .card-desc a {
       color: #003366;
       text-decoration: none;
       font-weight: bold;
-      border-bottom: 2px solid #C09030; /* 加上明顯的金黃色底線 */
+      border-bottom: 2px solid #C09030; 
       padding-bottom: 2px;
       transition: all 0.3s ease;
     }
     .card-desc a:hover {
-      background-color: #f0f7ff; /* 滑鼠移過去會有淡淡的背景色 */
-      color: #d97706; /* 字體變橘黃色 */
+      background-color: #f0f7ff; 
+      color: #d97706; 
       border-bottom-color: #d97706;
     }
-    /* ==================================== */
 
     /* 浮水印大數字 */
     .card-number-watermark {
@@ -201,7 +231,7 @@
       margin: 0;
     }
 
-   /* ===== 頁尾樣式 (全部置中版) ===== */
+    /* ===== 頁尾樣式 (全部置中版) ===== */
     footer {
       background-color: #e9e9e9;
       position: relative;
@@ -211,7 +241,7 @@
     .footer-info-container {
       max-width: 1000px;
       margin: auto;
-      padding: 3em 2em 2em 2em; /* 微調底部 padding 讓視覺更集中 */
+      padding: 3em 2em 2em 2em; 
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -242,7 +272,7 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 15px; /* 電話和分機之間的距離 */
+      gap: 15px; 
       margin-top: 5px;
     }
 
@@ -270,7 +300,7 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     }
 
-    /* 4. 底部版權與浮水印背景 (保留你找回來的 cis-1.jpg) */
+    /* 4. 底部版權與浮水印背景 */
     .footer-bottom-area {
       position: relative;
       height: 100px; 
@@ -301,21 +331,25 @@
       font-size: 0.9em;
     }
 
-/* 手機版響應式 */
+    /* 手機版響應式 */
     @media (max-width: 768px) {
-      /* 1. 縮小最外層容器的留白 */
       .container { 
         padding: 1.5em 1em; 
       }
       
-      /* 2. 縮小引言與影片區塊的留白，讓影片能左右撐到最大 */
       .intro-section { 
         flex-direction: column; 
         gap: 1.5em; 
         padding: 1.5em 1em; 
       }
 
-      /* 3. 卡片改為單欄，並稍微縮小卡片內距 */
+      .intro-text h2 {
+        font-size: 1.5em; 
+      }
+      .intro-lead {
+        font-size: 1rem;
+      }
+
       .grid { 
         grid-template-columns: 1fr; 
       }
@@ -323,7 +357,6 @@
         padding: 20px 15px; 
       }
       
-      /* 4. 確保影片容器在手機上強制滿版 */
       .video-container {
         width: 100%;
       }
@@ -350,8 +383,11 @@
     
     <section id="intro" class="intro-section">
       <div class="intro-text">
-        <h2>招手竹竹苗大矽谷頂尖學子 - 讓咱們一起看看陽明交大附中的特色與精彩！</h2>
-        <p>竹竹苗大矽谷關心教育的家長、同學和老師看過來 </p>
+        <h2>
+          <span class="title-main">招手竹竹苗大矽谷頂尖學子</span>
+          <span class="title-sub">一起看看陽明交大附中的特色與精彩！</span>
+        </h2>
+        <p class="intro-lead">竹竹苗大矽谷關心教育的家長、同學和老師看過來</p>
       </div>
 
       <div class="video-container">
@@ -485,7 +521,7 @@
 
   </div>
 
-<footer>
+  <footer>
     <div class="footer-info-container">
       
       <img src="logo-footer.png" alt="國立陽明交大附中" class="footer-logo">
@@ -521,5 +557,3 @@
 
 </body>
 </html>
-
-
