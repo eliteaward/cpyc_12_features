@@ -55,10 +55,28 @@
 
     /* 內容區塊容器 */
     .container {
-      padding: 3em 2em;
+      padding: 2.2em 2em 3em 2em;
       max-width: 1200px;
       margin: auto;
     }
+
+    /* ===== 新增：首圖橫幅 (柔邊效果) ===== */
+    .hero-banner {
+      width: 100%;
+      margin-bottom: 0em; /* 與下方引言區塊保持距離 */
+    }
+    
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px; /* 圓角效果 */
+      box-shadow: 0 12px 35px rgba(0, 51, 102, 0.15); /* 柔和的立體陰影 */
+      
+
+      /* mask-image: radial-gradient(ellipse, black 80%, transparent 100%); */
+    }
+    /* =================================== */
 
     /* 引言區塊 */
     .intro-section {
@@ -76,14 +94,13 @@
       flex: 1.2;
     }
 
-    /* ===== 優化後的引言文字排版 ===== */
+    /* 優化後的引言文字排版 */
     .intro-text h2 {
       margin-top: 0;
       margin-bottom: 15px;
       line-height: 1.4;
     }
 
-    /* 主標題：字體較大、穩重深藍 */
     .title-main {
       display: block; 
       font-size: 1.1em;
@@ -92,7 +109,6 @@
       margin-bottom: 8px;
     }
 
-    /* 副標題：字體稍微縮小、顏色層次變化 */
     .title-sub {
       display: block;
       font-size: 0.75em;
@@ -101,7 +117,6 @@
       letter-spacing: 1px;
     }
 
-    /* 前言段落：增加行高、顏色調柔和 */
     .intro-lead {
       font-size: 1.1rem;
       color: #555;
@@ -111,7 +126,6 @@
       border-left: 4px solid #C09030; 
       padding-left: 12px; 
     }
-    /* ============================== */
 
     /* 影片容器樣式 */
     .video-container {
@@ -231,13 +245,12 @@
       margin: 0;
     }
 
-    /* ===== 頁尾樣式 (全部置中版) ===== */
+    /* 頁尾樣式 (全部置中版) */
     footer {
       background-color: #e9e9e9;
       position: relative;
     }
 
-    /* 聯絡資訊區塊 (垂直置中排列) */
     .footer-info-container {
       max-width: 1000px;
       margin: auto;
@@ -251,7 +264,6 @@
       z-index: 2;
     }
 
-    /* 1. Logo 樣式 */
     .footer-logo {
       max-width: 350px;
       width: 100%;
@@ -259,14 +271,12 @@
       margin-bottom: 5px;
     }
 
-    /* 2. 地址樣式 (第一行) */
     .footer-address {
       font-size: 0.95em;
       color: #555;
       line-height: 1.6;
     }
 
-    /* 3. 電話與分機的整合橫排 (第二行) */
     .footer-contact-row {
       display: flex;
       flex-wrap: wrap;
@@ -276,13 +286,11 @@
       margin-top: 5px;
     }
 
-    /* 電話樣式 (低調處理：縮小字體、改深灰色、無底線) */
     .footer-phone {
       font-size: 0.95em;
       color: #555; 
     }
 
-    /* 分機樣式 (膠囊狀排列) */
     .footer-extensions {
       display: flex;
       flex-wrap: wrap;
@@ -300,7 +308,7 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     }
 
-    /* 4. 底部版權與浮水印背景 */
+    /* 底部版權與浮水印背景 */
     .footer-bottom-area {
       position: relative;
       height: 100px; 
@@ -333,7 +341,6 @@
 
     /* 手機版響應式 */
     @media (max-width: 768px) {
-      /* 縮小容器留白 */
       .container { padding: 1.5em 1em; }
       .intro-section { flex-direction: column; gap: 1.5em; padding: 1.5em 1em; }
       .grid { grid-template-columns: 1fr; }
@@ -341,22 +348,21 @@
       .video-container { width: 100%; }
       .video-wrapper { width: 100%; }
       
-      /* ===== 新增：優化手機版導覽列 ===== */
       nav {
-        flex-wrap: nowrap; /* 強制不換行，排在同一列 */
+        flex-wrap: nowrap; 
       }
       nav a {
-        flex: 1; /* 三個按鈕平均分配 1/3 的寬度 */
-        padding: 12px 2px; /* 縮小左右內距，保持上下容易點擊 */
-        font-size: 0.85rem; /* 字體稍微縮小以適應螢幕 */
+        flex: 1; 
+        padding: 12px 2px; 
+        font-size: 0.85rem; 
         text-align: center;
-        display: flex; /* 確保文字能在按鈕內絕對置中 */
+        display: flex; 
         align-items: center;
         justify-content: center;
-        border-right: 1px solid rgba(255, 255, 255, 0.15); /* 加上淡淡的白色分隔線，更有質感 */
+        border-right: 1px solid rgba(255, 255, 255, 0.15); 
       }
       nav a:last-child {
-        border-right: none; /* 最後一個按鈕不需要右邊的分隔線 */
+        border-right: none; 
       }
     }
   </style>
@@ -377,6 +383,9 @@
 
   <div class="container">
     
+    <div class="hero-banner">
+      <img src="20260317.jpg" alt="陽明交大附中形象首圖">
+    </div>
     <section id="intro" class="intro-section">
       <div class="intro-text">
         <h2>
@@ -429,7 +438,7 @@
           <div class="card-content-wrapper">
             <h2 class="card-title">沉浸世界級頂大資源</h2>
             <h3 class="card-subtitle">優游陽明交大學術殿堂，助你知識學習大躍進！</h3>
-            <p class="card-desc">附中學生不僅能享受附中自家的優質課程，還能直接銜接陽明交大的研究資源與師資力量。 附中學生持學生證就可直接進到<a href="https://www.lib.nycu.edu.tw/"_blank">陽明交大浩然圖書館沉浸浩瀚書海及借閱圖書</a>，在地選考APX與美國AP預修課程，並與各系所、研究中心及附中推展辦公室進行前瞻實驗室體驗及共同指導新銳專題等多元的課程合作與活動連結，讓附中學生能體驗自家頂大的豐沛學術資源，提前與世界最新科技與研究成果接軌。</p>
+            <p class="card-desc">附中學生不僅能享受附中自家的優質課程，還能直接銜接陽明交大的研究資源與師資力量。 附中學生持學生證就可直接進到<a href="https://www.lib.nycu.edu.tw/" target="_blank">陽明交大浩然圖書館沉浸浩瀚書海及借閱圖書</a>，在地選考APX與美國AP預修課程，並與各系所、研究中心及附中推展辦公室進行前瞻實驗室體驗及共同指導新銳專題等多元的課程合作與活動連結，讓附中學生能體驗自家頂大的豐沛學術資源，提前與世界最新科技與研究成果接軌。</p>
           </div>
         </div>
 
@@ -474,7 +483,7 @@
           <div class="card-content-wrapper">
             <h2 class="card-title">推動「附中菁英獎」</h2>
             <h3 class="card-subtitle">打造屬於自己獨一無二的樣子與精彩！</h3>
-            <p class="card-desc"><a href="https://www.cpshs.hcc.edu.tw/album/index.php?aid=2083&col=5&maxRows=10" target="_blank">「自導學習，陶鑄菁英！」</a>附中突破公立高中的資源侷限與框架，推動<a href="https://eliteaward.github.io/cpyc/" target="_blank">「附中菁英獎」</a>，鼓勵附中同學依其優勢領域選擇自導式學習項目，有方向有輪廓的引導附中同學勇於嘗試自主實踐，塑造卓越而獨特的自己，並結合附中及陽明交大豐沛的師資﹑圖資、設備與課程資源，探索與譜寫屬於自己的自導式學習藍圖，精緻與豐美自己的高中學習歷程，打造屬於自己獨一無二的樣子與精彩。</p>
+            <p class="card-desc">「自導學習，陶鑄菁英！」附中突破公立高中的資源侷限與框架，推動<a href="https://eliteaward.github.io/cpyc/" target="_blank">「附中菁英獎」</a>，鼓勵附中同學依其優勢領域選擇自導式學習項目，有方向有輪廓的引導附中同學勇於嘗試自主實踐，塑造卓越而獨特的自己，並結合附中及陽明交大豐沛的師資﹑圖資、設備與課程資源，探索與譜寫屬於自己的自導式學習藍圖，精緻與豐美自己的高中學習歷程，打造屬於自己獨一無二的樣子與精彩。</p>
           </div>
         </div>
 
@@ -553,18 +562,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
